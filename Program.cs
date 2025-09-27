@@ -52,15 +52,11 @@ builder.Services.AddSingleton<Kernel>(serviceProvider =>
 
     // Add Azure OpenAI chat completion service
     kernelBuilder.AddAzureOpenAIChatCompletion(
-        deploymentName: "gpt-4.1",
-        endpoint: "https://angieasset.openai.azure.com/",
-        apiKey: "6YYqlKbFEB9KWusOP53AbBA2jQ8oGWK6l004LOsuRznVBbal3YzoJQQJ99BIACYeBjFXJ3w3AAABACOGIuAI"
+        deploymentName: builder.Configuration.GetValue<string>("AzureOpenAI:DeploymentName"),
+        endpoint: builder.Configuration.GetValue<string>("AzureOpenAI:Endpoint"),
+        apiKey: builder.Configuration.GetValue<string>("AzureOpenAI:ApiKey")
         );
-    /*kernelBuilder.AddOpenAIChatCompletion(
-        modelId: "gpt-4.1",
-        apiKey: "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"
-        );
-*/
+  
     var loggerFactory = serviceProvider.GetRequiredService<ILoggerFactory>();
     kernelBuilder.Services.AddSingleton(loggerFactory);
     kernelBuilder.Services.AddSingleton(serviceProvider.GetRequiredService<IDataBaseSchemaReaderService>());
