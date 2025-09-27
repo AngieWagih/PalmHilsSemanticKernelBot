@@ -1,0 +1,786 @@
+{
+  "database": "PalmHills.db",
+  "tables": [
+    {
+      "tableName": "AppointmentTypes",
+      "columns": [
+        {
+          "name": "ID",
+          "type": "INTEGER",
+          "nullable": false,
+          "primaryKey": true,
+          "autoIncrement": true
+        },
+        {
+          "name": "Type",
+          "type": "TEXT",
+          "nullable": false,
+          "primaryKey": false,
+          "autoIncrement": false
+        }
+      ],
+      "constraints": [
+        {
+          "name": "PK_AppointmentTypes",
+          "type": "PRIMARY KEY",
+          "columns": ["ID"]
+        }
+      ]
+    },
+    {
+      "tableName": "Customers",
+      "columns": [
+        {
+          "name": "ID",
+          "type": "INTEGER",
+          "nullable": false,
+          "primaryKey": true,
+          "autoIncrement": true
+        },
+        {
+          "name": "Name",
+          "type": "TEXT",
+          "nullable": false,
+          "primaryKey": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "Email",
+          "type": "TEXT",
+          "nullable": false,
+          "primaryKey": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "Phone",
+          "type": "TEXT",
+          "nullable": true,
+          "primaryKey": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "OwnProperty",
+          "type": "INTEGER",
+          "nullable": false,
+          "primaryKey": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "BlackListed",
+          "type": "INTEGER",
+          "nullable": false,
+          "primaryKey": false,
+          "autoIncrement": false
+        }
+      ],
+      "constraints": [
+        {
+          "name": "PK_Customers",
+          "type": "PRIMARY KEY",
+          "columns": ["ID"]
+        }
+      ]
+    },
+    {
+      "tableName": "DaysOfWeek",
+      "columns": [
+        {
+          "name": "DayOfWeekId",
+          "type": "INTEGER",
+          "nullable": false,
+          "primaryKey": true,
+          "autoIncrement": true
+        },
+        {
+          "name": "DayShortName",
+          "type": "TEXT",
+          "nullable": false,
+          "primaryKey": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "DayOrder",
+          "type": "INTEGER",
+          "nullable": false,
+          "primaryKey": false,
+          "autoIncrement": false
+        }
+      ],
+      "constraints": [
+        {
+          "name": "PK_DaysOfWeek",
+          "type": "PRIMARY KEY",
+          "columns": ["DayOfWeekId"]
+        }
+      ]
+    },
+    {
+      "tableName": "Locations",
+      "columns": [
+        {
+          "name": "LocationId",
+          "type": "INTEGER",
+          "nullable": false,
+          "primaryKey": true,
+          "autoIncrement": true
+        },
+        {
+          "name": "LocationName",
+          "type": "TEXT",
+          "nullable": false,
+          "primaryKey": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "CreatedAt",
+          "type": "TEXT",
+          "nullable": false,
+          "primaryKey": false,
+          "autoIncrement": false
+        }
+      ],
+      "constraints": [
+        {
+          "name": "PK_Locations",
+          "type": "PRIMARY KEY",
+          "columns": ["LocationId"]
+        }
+      ]
+    },
+    {
+      "tableName": "PropertyTypes",
+      "columns": [
+        {
+          "name": "PropertyTypeId",
+          "type": "INTEGER",
+          "nullable": false,
+          "primaryKey": true,
+          "autoIncrement": true
+        },
+        {
+          "name": "PropertyTypeName",
+          "type": "TEXT",
+          "nullable": false,
+          "primaryKey": false,
+          "autoIncrement": false
+        }
+      ],
+      "constraints": [
+        {
+          "name": "PK_PropertyTypes",
+          "type": "PRIMARY KEY",
+          "columns": ["PropertyTypeId"]
+        }
+      ]
+    },
+    {
+      "tableName": "Bookings",
+      "columns": [
+        {
+          "name": "ID",
+          "type": "INTEGER",
+          "nullable": false,
+          "primaryKey": true,
+          "autoIncrement": true
+        },
+        {
+          "name": "Day",
+          "type": "TEXT",
+          "nullable": false,
+          "primaryKey": false,
+          "autoIncrement": false,
+          "description": "Date in format yyyy-mm-dd 00:00:00"
+        },
+        {
+          "name": "CreatedAt",
+          "type": "TEXT",
+          "nullable": false,
+          "primaryKey": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "StartTime",
+          "type": "REAL",
+          "nullable": false,
+          "primaryKey": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "EndTime",
+          "type": "REAL",
+          "nullable": false,
+          "primaryKey": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "IsBooked",
+          "type": "INTEGER",
+          "nullable": false,
+          "primaryKey": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "Attendance",
+          "type": "INTEGER",
+          "nullable": true,
+          "primaryKey": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "AppointmentTypeId",
+          "type": "INTEGER",
+          "nullable": false,
+          "primaryKey": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "CustomerID",
+          "type": "INTEGER",
+          "nullable": true,
+          "primaryKey": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "DayOfWeekId",
+          "type": "INTEGER",
+          "nullable": false,
+          "primaryKey": false,
+          "autoIncrement": false
+        }
+      ],
+      "constraints": [
+        {
+          "name": "PK_Bookings",
+          "type": "PRIMARY KEY",
+          "columns": ["ID"]
+        }
+      ],
+      "foreignKeys": [
+        {
+          "name": "FK_Bookings_AppointmentTypes_AppointmentTypeId",
+          "column": "AppointmentTypeId",
+          "referencedTable": "AppointmentTypes",
+          "referencedColumn": "ID",
+          "onDelete": "CASCADE"
+        },
+        {
+          "name": "FK_Bookings_Customers_CustomerID",
+          "column": "CustomerID",
+          "referencedTable": "Customers",
+          "referencedColumn": "ID",
+          "onDelete": "SET NULL"
+        },
+        {
+          "name": "FK_Bookings_DaysOfWeek_DayOfWeekId",
+          "column": "DayOfWeekId",
+          "referencedTable": "DaysOfWeek",
+          "referencedColumn": "DayOfWeekId",
+          "onDelete": "RESTRICT"
+        }
+      ]
+    },
+    {
+      "tableName": "Projects",
+      "columns": [
+        {
+          "name": "ProjectId",
+          "type": "INTEGER",
+          "nullable": false,
+          "primaryKey": true,
+          "autoIncrement": true
+        },
+        {
+          "name": "ProjectName",
+          "type": "TEXT",
+          "nullable": false,
+          "primaryKey": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "LocationId",
+          "type": "INTEGER",
+          "nullable": false,
+          "primaryKey": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "Description",
+          "type": "TEXT",
+          "nullable": true,
+          "primaryKey": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "CreatedAt",
+          "type": "TEXT",
+          "nullable": false,
+          "primaryKey": false,
+          "autoIncrement": false
+        }
+      ],
+      "constraints": [
+        {
+          "name": "PK_Projects",
+          "type": "PRIMARY KEY",
+          "columns": ["ProjectId"]
+        }
+      ],
+      "foreignKeys": [
+        {
+          "name": "FK_Projects_Locations_LocationId",
+          "column": "LocationId",
+          "referencedTable": "Locations",
+          "referencedColumn": "LocationId",
+          "onDelete": "CASCADE"
+        }
+      ]
+    },
+    {
+      "tableName": "Zones",
+      "columns": [
+        {
+          "name": "ZoneId",
+          "type": "INTEGER",
+          "nullable": false,
+          "primaryKey": true,
+          "autoIncrement": true
+        },
+        {
+          "name": "ZoneName",
+          "type": "TEXT",
+          "nullable": false,
+          "primaryKey": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "ProjectId",
+          "type": "INTEGER",
+          "nullable": false,
+          "primaryKey": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "Description",
+          "type": "TEXT",
+          "nullable": true,
+          "primaryKey": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "CreatedAt",
+          "type": "TEXT",
+          "nullable": false,
+          "primaryKey": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "StartingPrice",
+          "type": "REAL",
+          "nullable": true,
+          "primaryKey": false,
+          "autoIncrement": false
+        }
+      ],
+      "constraints": [
+        {
+          "name": "PK_Zones",
+          "type": "PRIMARY KEY",
+          "columns": ["ZoneId"]
+        }
+      ],
+      "foreignKeys": [
+        {
+          "name": "FK_Zones_Projects_ProjectId",
+          "column": "ProjectId",
+          "referencedTable": "Projects",
+          "referencedColumn": "ProjectId",
+          "onDelete": "CASCADE"
+        }
+      ]
+    },
+    {
+      "tableName": "Properties",
+      "columns": [
+        {
+          "name": "PropertyId",
+          "type": "INTEGER",
+          "nullable": false,
+          "primaryKey": true,
+          "autoIncrement": true
+        },
+        {
+          "name": "ZoneId",
+          "type": "INTEGER",
+          "nullable": false,
+          "primaryKey": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "PropertyTypeId",
+          "type": "INTEGER",
+          "nullable": false,
+          "primaryKey": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "PropertyCode",
+          "type": "TEXT",
+          "nullable": true,
+          "primaryKey": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "PriceMin",
+          "type": "REAL",
+          "nullable": true,
+          "primaryKey": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "PriceMax",
+          "type": "REAL",
+          "nullable": true,
+          "primaryKey": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "PropertyStatus",
+          "type": "INTEGER",
+          "nullable": false,
+          "primaryKey": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "Bedrooms",
+          "type": "INTEGER",
+          "nullable": true,
+          "primaryKey": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "Bathrooms",
+          "type": "INTEGER",
+          "nullable": true,
+          "primaryKey": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "AreaSqft",
+          "type": "decimal(10,2)",
+          "nullable": true,
+          "primaryKey": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "FloorNumber",
+          "type": "INTEGER",
+          "nullable": true,
+          "primaryKey": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "CreatedAt",
+          "type": "TEXT",
+          "nullable": false,
+          "primaryKey": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "UpdatedAt",
+          "type": "TEXT",
+          "nullable": false,
+          "primaryKey": false,
+          "autoIncrement": false
+        }
+      ],
+      "constraints": [
+        {
+          "name": "PK_Properties",
+          "type": "PRIMARY KEY",
+          "columns": ["PropertyId"]
+        }
+      ],
+      "foreignKeys": [
+        {
+          "name": "FK_Properties_PropertyTypes_PropertyTypeId",
+          "column": "PropertyTypeId",
+          "referencedTable": "PropertyTypes",
+          "referencedColumn": "PropertyTypeId",
+          "onDelete": "RESTRICT"
+        },
+        {
+          "name": "FK_Properties_Zones_ZoneId",
+          "column": "ZoneId",
+          "referencedTable": "Zones",
+          "referencedColumn": "ZoneId",
+          "onDelete": "CASCADE"
+        }
+      ]
+    },
+    {
+      "tableName": "Images",
+      "columns": [
+        {
+          "name": "ImageId",
+          "type": "INTEGER",
+          "nullable": false,
+          "primaryKey": true,
+          "autoIncrement": true
+        },
+        {
+          "name": "PropertyId",
+          "type": "INTEGER",
+          "nullable": false,
+          "primaryKey": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "ImageLink",
+          "type": "TEXT",
+          "nullable": false,
+          "primaryKey": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "CreatedAt",
+          "type": "TEXT",
+          "nullable": false,
+          "primaryKey": false,
+          "autoIncrement": false
+        }
+      ],
+      "constraints": [
+        {
+          "name": "PK_Images",
+          "type": "PRIMARY KEY",
+          "columns": ["ImageId"]
+        }
+      ],
+      "foreignKeys": [
+        {
+          "name": "FK_Images_Properties_PropertyId",
+          "column": "PropertyId",
+          "referencedTable": "Properties",
+          "referencedColumn": "PropertyId",
+          "onDelete": "CASCADE"
+        }
+      ]
+    },
+    {
+      "tableName": "PaymentPlans",
+      "columns": [
+        {
+          "name": "PaymentPlanId",
+          "type": "INTEGER",
+          "nullable": false,
+          "primaryKey": true,
+          "autoIncrement": true
+        },
+        {
+          "name": "PropertyId",
+          "type": "INTEGER",
+          "nullable": false,
+          "primaryKey": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "PlanName",
+          "type": "TEXT",
+          "nullable": false,
+          "primaryKey": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "DownPaymentAmount",
+          "type": "REAL",
+          "nullable": true,
+          "primaryKey": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "DownPaymentPercentage",
+          "type": "REAL",
+          "nullable": true,
+          "primaryKey": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "InstallmentMonths",
+          "type": "INTEGER",
+          "nullable": true,
+          "primaryKey": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "MonthlyInstallment",
+          "type": "REAL",
+          "nullable": true,
+          "primaryKey": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "InterestRate",
+          "type": "REAL",
+          "nullable": true,
+          "primaryKey": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "Description",
+          "type": "TEXT",
+          "nullable": true,
+          "primaryKey": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "IsActive",
+          "type": "INTEGER",
+          "nullable": false,
+          "primaryKey": false,
+          "autoIncrement": false
+        },
+        {
+          "name": "CreatedAt",
+          "type": "TEXT",
+          "nullable": false,
+          "primaryKey": false,
+          "autoIncrement": false
+        }
+      ],
+      "constraints": [
+        {
+          "name": "PK_PaymentPlans",
+          "type": "PRIMARY KEY",
+          "columns": ["PaymentPlanId"]
+        }
+      ],
+      "foreignKeys": [
+        {
+          "name": "FK_PaymentPlans_Properties_PropertyId",
+          "column": "PropertyId",
+          "referencedTable": "Properties",
+          "referencedColumn": "PropertyId",
+          "onDelete": "CASCADE"
+        }
+      ]
+    }
+  ],
+  "indexes": [
+    {
+      "name": "IX_Bookings_AppointmentTypeId",
+      "table": "Bookings",
+      "columns": ["AppointmentTypeId"],
+      "unique": false
+    },
+    {
+      "name": "IX_Bookings_CustomerID",
+      "table": "Bookings",
+      "columns": ["CustomerID"],
+      "unique": false
+    },
+    {
+      "name": "IX_Bookings_DayOfWeekId",
+      "table": "Bookings",
+      "columns": ["DayOfWeekId"],
+      "unique": false
+    },
+    {
+      "name": "IX_Images_PropertyId",
+      "table": "Images",
+      "columns": ["PropertyId"],
+      "unique": false
+    },
+    {
+      "name": "IX_PaymentPlans_PropertyId",
+      "table": "PaymentPlans",
+      "columns": ["PropertyId"],
+      "unique": true
+    },
+    {
+      "name": "IX_Projects_LocationId",
+      "table": "Projects",
+      "columns": ["LocationId"],
+      "unique": false
+    },
+    {
+      "name": "IX_Properties_PropertyTypeId",
+      "table": "Properties",
+      "columns": ["PropertyTypeId"],
+      "unique": false
+    },
+    {
+      "name": "IX_Properties_ZoneId",
+      "table": "Properties",
+      "columns": ["ZoneId"],
+      "unique": false
+    },
+    {
+      "name": "IX_Zones_ProjectId",
+      "table": "Zones",
+      "columns": ["ProjectId"],
+      "unique": false
+    }
+  ],
+  "relationships": {
+    "Bookings": {
+      "belongsTo": [
+        {
+          "table": "AppointmentTypes",
+          "via": "AppointmentTypeId"
+        },
+        {
+          "table": "Customers",
+          "via": "CustomerID"
+        },
+        {
+          "table": "DaysOfWeek",
+          "via": "DayOfWeekId"
+        }
+      ]
+    },
+    "Projects": {
+      "belongsTo": [
+        {
+          "table": "Locations",
+          "via": "LocationId"
+        }
+      ]
+    },
+    "Zones": {
+      "belongsTo": [
+        {
+          "table": "Projects",
+          "via": "ProjectId"
+        }
+      ]
+    },
+    "Properties": {
+      "belongsTo": [
+        {
+          "table": "PropertyTypes",
+          "via": "PropertyTypeId"
+        },
+        {
+          "table": "Zones",
+          "via": "ZoneId"
+        }
+      ]
+    },
+    "Images": {
+      "belongsTo": [
+        {
+          "table": "Properties",
+          "via": "PropertyId"
+        }
+      ]
+    },
+    "PaymentPlans": {
+      "belongsTo": [
+        {
+          "table": "Properties",
+          "via": "PropertyId"
+        }
+      ]
+    }
+  }
+}

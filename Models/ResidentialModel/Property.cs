@@ -1,8 +1,8 @@
 ﻿namespace PalmHilsSemanticKernelBot.Models.ResidentialModel
 {
-    public class PropertyDto
+    public class Property
     {
-        public PropertyDto(int propertyId, string propertyCode, string zoneName, string projectName, string locationName, PropertyTypeName propertyTypeName, double? priceMin, double? priceMax, PropertyStatus propertyStatus, int? bedrooms, int? bathrooms, double? areaSqft, int? floorNumber, PaymentPlanDto paymentPlan)
+        public Property(int propertyId, string propertyCode, string zoneName, string projectName, string locationName, PropertyTypeName propertyTypeName, double? priceMin, double? priceMax, PropertyStatus propertyStatus, int? bedrooms, int? bathrooms, double? areaSqft, int? floorNumber, PaymentPlan paymentPlan)
         {
             PropertyId = propertyId;
             PropertyCode = propertyCode;
@@ -33,7 +33,7 @@
         public int? Bathrooms { get; set; }
         public double? AreaSqft { get; set; }
         public int? FloorNumber { get; set; }
-        public PaymentPlanDto PaymentPlan { get; set; }
+        public PaymentPlan PaymentPlan { get; set; }
     }
     public enum PropertyTypeName
     {

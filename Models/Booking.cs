@@ -1,8 +1,8 @@
 ﻿namespace PalmHilsSemanticKernelBot.Models
 {
-    public class BookingDto
+    public class Booking
     {
-        public BookingDto(int id, DayOfWeek day, string date, ScheduleTimeSlot scheduleTimeSlot, bool isBooked, AppointmentType appointmentType, int? customerId, string? customerName, string? customerEmail, bool? hasAttended)
+        public Booking(int id, DayOfWeek day, string date, ScheduleTimeSlot scheduleTimeSlot, bool isBooked, AppointmentType appointmentType, int? customerId, string? customerName, string? customerEmail, bool? hasAttended)
         {
             Id = id;
             Day = day;

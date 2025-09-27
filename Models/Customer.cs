@@ -1,8 +1,11 @@
 ﻿namespace PalmHilsSemanticKernelBot.Models
 {
-    public class CustomerDto
+    public class Customer
     {
-        public CustomerDto(int id, string? name, string? email, string? phone, bool ownProperty, bool isBlocked)
+        public Customer()
+        {
+        }   
+        public Customer(int id, string? name, string? email, string? phone, bool ownProperty, bool isBlocked)
         {
             Id = id;
             Name = name;

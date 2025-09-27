@@ -1,8 +1,8 @@
 ﻿namespace PalmHilsSemanticKernelBot.Models.ResidentialModel
 {
-    public class LocationDto
+    public class Location
     {
-        public LocationDto(int locationId, string locationName, List<ProjectDto> projects)
+        public Location(int locationId, string locationName, List<Project> projects)
         {
             LocationId = locationId;
             LocationName = locationName;
@@ -11,6 +11,6 @@
 
         public int LocationId { get; set; }
         public string LocationName { get; set; }
-        public List<ProjectDto> Projects { get; set; } = new List<ProjectDto>();
+        public List<Project> Projects { get; set; } = new List<Project>();
     }
 }

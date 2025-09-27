@@ -48,7 +48,7 @@ namespace PalmHilsSemanticKernelBot.Controllers
                     return StatusCode(500, new { error = "Failed to get DirectLine token" });
                 }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 
                 return StatusCode(500, new { error = "Internal server error" });

@@ -1,6 +1,6 @@
 ﻿namespace PalmHilsSemanticKernelBot.Models.ResidentialModel
 {
-    public class PaymentPlanDto
+    public class PaymentPlan
     {
         public int PaymentPlanId { get; set; }
         public string PlanName { get; set; }

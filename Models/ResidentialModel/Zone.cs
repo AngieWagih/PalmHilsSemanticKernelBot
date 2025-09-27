@@ -1,8 +1,8 @@
 ﻿namespace PalmHilsSemanticKernelBot.Models.ResidentialModel
 {
-    public class ZoneDto
+    public class Zone
     {
-        public ZoneDto(int zoneId, string zoneName, double? startingPrice, string description, List<PropertyDto> properties)
+        public Zone(int zoneId, string zoneName, double? startingPrice, string description, List<Property> properties)
         {
             ZoneId = zoneId;
             ZoneName = zoneName;
@@ -15,6 +15,6 @@
         public string ZoneName { get; set; }
         public double? StartingPrice { get; set; }
         public string Description { get; set; }
-        public List<PropertyDto> Properties { get; set; }
+        public List<Property> Properties { get; set; }
     }
 }
