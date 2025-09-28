@@ -10,15 +10,13 @@ namespace PalmHilsSemanticKernelBot.BusinessLogic.SemanticKernelPlugins
 {
     public class TextToSqlitePlugin
     {
-        /*public Kernel Kernel { get; set; }*/
+        
         public IDataBaseSchemaReaderService DatabaseSchemaReaderService { get; set; }
-        private readonly IConfiguration Configuration;
         private readonly IDbConnection Connection;
 
-        public TextToSqlitePlugin(IDataBaseSchemaReaderService databaseSchemaReaderService, IConfiguration configuration, IDbConnection connection)
+        public TextToSqlitePlugin(IDataBaseSchemaReaderService databaseSchemaReaderService,  IDbConnection connection)
         {
             DatabaseSchemaReaderService = databaseSchemaReaderService;
-            Configuration = configuration;
             Connection = connection;
         }
 
@@ -30,6 +28,9 @@ namespace PalmHilsSemanticKernelBot.BusinessLogic.SemanticKernelPlugins
             {
                 var prompt = $@"you are an expert SQLite query generator. Given the database schema and user input,
                                 generate a valid SQLite query.
+
+                                IMPORTANT: 
+                                      CurrentDateTime is {DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}
 
                                 DATABASE SCHEMA:
                                 {DatabaseSchemaReaderService.GetDatabaseSchema()}

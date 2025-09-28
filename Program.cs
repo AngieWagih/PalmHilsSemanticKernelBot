@@ -45,6 +45,7 @@ builder.Services.AddSingleton<UserState>();
 
 // Register plugins as services
 builder.Services.AddSingleton<TextToSqlitePlugin>();
+builder.Services.AddSingleton<BookingPlugin>();
 
 builder.Services.AddSingleton<Kernel>(serviceProvider =>
 {
@@ -68,8 +69,12 @@ builder.Services.AddSingleton<Kernel>(serviceProvider =>
     var textToSqlitePlugin = serviceProvider.GetRequiredService<TextToSqlitePlugin>();
     kernel.Plugins.AddFromObject(textToSqlitePlugin, "TextToSqlitePlugin");
 
-    kernel.Plugins.AddFromType<BookingPlugin>();
+    var bookingPlugin = serviceProvider.GetRequiredService<BookingPlugin>();
+    kernel.Plugins.AddFromObject(bookingPlugin, "BookingPlugin");
+
+    
     /*kernel.Plugins.AddFromType<CustomerDetailsPlugin>();*/
+
     kernel.Plugins.AddFromType<DocumentLegalPlugin>();
 
     return kernel;
